@@ -1,0 +1,33 @@
+{
+  "name": "cute-localize",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "clupdate": "./bin/clupdate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ololoepepe/cute-localize.git"
+  },
+  "keywords": [
+    "i18n",
+    "localization",
+    "localize"
+  ],
+  "author": "Andrey Bogdanov <ololoepepe@gmail.com> (https://ololoepepe.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ololoepepe/cute-localize/issues"
+  },
+  "homepage": "https://github.com/ololoepepe/cute-localize",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "merge": "^1.2.0",
+    "mkpath": "^0.1.0",
+    "path": "^0.12.7"
+  }
+}
