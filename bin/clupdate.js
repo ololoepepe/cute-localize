@@ -84,8 +84,10 @@ var addNewTranslation = function(sourceText, disambiguation) {
 var matchString = function(text, start, quotationMark) {
     var isEscaped = function(ind) {
         var count = 0;
-        while (ind > 0 && text[ind - 1] == "\\")
+        while (ind > 0 && text[ind - 1] == "\\") {
+            ++count;
             --ind;
+        }
         return count % 2;
     };
     var i = start;
