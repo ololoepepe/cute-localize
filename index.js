@@ -2,9 +2,9 @@ var merge = require("merge");
 
 var initialize = function(options) {
     var extraLocations = (options && options.extraLocations) ? options.extraLocations : null;
-    if (typeof options.extraLocations != "string" && !(options.extraLocations instanceof Array))
+    if (options && typeof options.extraLocations != "string" && !(options.extraLocations instanceof Array))
         extraLocations = null;
-    if (typeof options.extraLocations == "string")
+    if (options && typeof options.extraLocations == "string")
         extraLocations = [extraLocations];
     var locations = extraLocations || [];
     if (!options || !options.noDefault)
@@ -73,7 +73,7 @@ var initialize = function(options) {
             }
         }, {});
     };
-    translate.setLocale((options.locale && (typeof options.locale == "string")) ? options.locale : "en");
+    translate.setLocale((options && options.locale && (typeof options.locale == "string")) ? options.locale : "en");
     return translate;
 };
 
