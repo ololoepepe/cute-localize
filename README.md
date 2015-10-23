@@ -19,7 +19,7 @@ Then open *app.js* with your favorite editor and paste the following code:
 ```
 #!/usr/bin/env node
 
-var translate = require("cute-translate")({
+var translate = require("cute-localize")({
     locale: "ru" //Or whatever locale you wish
 });
 
@@ -46,7 +46,7 @@ You should see something like this (if you have the *tree* utility):
 
 ```
 .
-├── test.js
+├── app.js
 └── translations
     └── ru.json
 ```
@@ -180,7 +180,7 @@ doT.js example
 ==============
 
 ```
-var translate = require("cute-translate");
+var translate = require("cute-localize");
 var dot = require("dot");
 var template = dot.template(someTemplateData);
 var model = {
