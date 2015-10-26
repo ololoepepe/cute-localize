@@ -36,7 +36,9 @@ var initialize = function(options) {
             return applyArgs(sourceText);
         if (disambiguation && typeof disambiguation == "string") {
             translation = translation[disambiguation];
-            if (typeof translation == "object" && typeof translation.value == "string")
+            if (typeof translation != "object")
+                return applyArgs(sourceText);
+            if (typeof translation.value == "string")
                 return applyArgs(translation.value);
         }
         translation = translation._default;
