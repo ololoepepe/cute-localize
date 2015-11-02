@@ -70,7 +70,8 @@ var initialize = function(options) {
             try {
                 return merge.recursive(acc, require(loc + "/" + locale + ".json"));
             } catch (err) {
-                console.log(err);
+                if (!options || !options.silent)
+                    console.log(err);
                 return acc;
             }
         }, {});
