@@ -8,7 +8,7 @@ var initialize = function(options) {
         extraLocations = [extraLocations];
     var locations = extraLocations || [];
     if (!options || !options.noDefault)
-        locations.push(process.cwd() + "/translations");
+        locations.unshift(process.cwd() + "/translations");
     var translate = function(sourceText, disambiguation) {
         if (sourceText && typeof sourceText == "object" && sourceText.hasOwnProperty("sourceText")
             && sourceText.hasOwnProperty("disambiguation") && sourceText.hasOwnProperty("args")) {
