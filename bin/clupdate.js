@@ -69,8 +69,7 @@ var addNewTranslation = function(sourceText, disambiguation) {
         return;
     if (!disambiguation)
         disambiguation = "_default";
-    sourceText = sourceText.replace(/\\n/g, "\n").replace(/\\t/g, "\t").replace(/\\"/g, "\"").replace(/\\'/g, "\'");
-    sourceText = sourceText.replace(/\\`/g, "\`");
+    sourceText = sourceText.replace(/\\n/g, "\n").replace(/\\t/g, "\t").replace(/\\"/g, "\"");
     locales.forEach(function(locale) {
         if (!toTranslate.hasOwnProperty(locale))
             toTranslate[locale] = {};
