@@ -1,3 +1,4 @@
+(function(w) {
 var merge = require("merge");
 
 var initialize = function(options) {
@@ -86,4 +87,9 @@ var initialize = function(options) {
     return translate;
 };
 
-module.exports = initialize;
+if (module && module.exports) {
+  module.exports = initialize;
+} else if (w) {
+  w.cuteLocalize = initialize;
+}
+})(window);
