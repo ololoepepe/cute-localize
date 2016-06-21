@@ -63,6 +63,11 @@ var initialize = function(options) {
         };
     };
     translate.setLocale = function(locale) {
+        if (typeof locale === 'object') {
+          translate.locale = 'object';
+          translate.translations = locale;
+          return;
+        }
         if (!locale || typeof locale != "string")
             return;
         translate.locale = locale;
@@ -76,7 +81,8 @@ var initialize = function(options) {
             }
         }, {});
     };
-    translate.setLocale((options && options.locale && (typeof options.locale == "string")) ? options.locale : "en");
+    translate.setLocale((options && options.locale
+      && (typeof options.locale == "string" || typeof options.locale === 'object')) ? options.locale : "en");
     return translate;
 };
 
