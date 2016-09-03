@@ -28,7 +28,7 @@ var initialize = function(options) {
         }
         var applyArgs = function(text) {
             args.forEach(function(arg, i) {
-                text = text.split(`$[${i + 1}]`).join(arg);
+                text = text.split("$[" + (i + 1) + "]").join(arg);
             });
             return text;
         };
