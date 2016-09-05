@@ -23,6 +23,7 @@ program
     .option("-T, --no-parse-translate", "Do not parse default 'translate' function")
     .option("-N, --no-parse-noop", "Do not parse default 'translate.noop' function")
     .option("-G, --no-use-gitignore", "Do not use 'git check-ignore' to exclude files/directories")
+    .option("-X, --excluded-paths", "Exclude files/directories whose paths contain the patterns specified")
     .option("-v, --verbose", "Print error messages")
     .parse(process.argv);
 
@@ -39,6 +40,8 @@ if (extensions.length < 1) {
     extensions.push("js");
     extensions.push("html");
 }
+
+var excludedPatterns = excludedPaths || [];
 
 var defaultString = program.defaultString || {}; //NODE: To use with 'typeof defaultString == "object"'
 
@@ -152,6 +155,12 @@ var processDir = function(dirName) {
                 if (verbose)
                     console.log(err);
             }
+        }
+        var shouldExclude = excludedPaths.some(function(ep) {
+            return (dirName + "/" + fileName).indexOf(ep) >= 0;
+        });
+        if (shouldExclude) {
+            return;
         }
         var stats = FS.statSync(dirName + "/" + fileName);
         if (stats.isDirectory())

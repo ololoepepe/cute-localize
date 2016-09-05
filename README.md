@@ -173,6 +173,7 @@ clupdate tool options
 -T, --no-parse-translate        Do not parse default 'translate' function
 -N, --no-parse-noop             Do not parse default 'translate.noop' function
 -G, --no-use-gitignore          Do not use 'git check-ignore' to exclude files/directories
+-X, --excluded-paths            Exclude files/directories whose paths contain the patterns specified
 -v, --verbose                   Print error messages
 ```
 
