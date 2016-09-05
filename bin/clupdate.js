@@ -23,7 +23,7 @@ program
     .option("-T, --no-parse-translate", "Do not parse default 'translate' function")
     .option("-N, --no-parse-noop", "Do not parse default 'translate.noop' function")
     .option("-G, --no-use-gitignore", "Do not use 'git check-ignore' to exclude files/directories")
-    .option("-X, --excluded-paths", "Exclude files/directories whose paths contain the patterns specified")
+    .option("-X, --excluded-patterns", "Exclude files/directories whose paths contain the patterns specified")
     .option("-v, --verbose", "Print error messages")
     .parse(process.argv);
 
@@ -41,7 +41,7 @@ if (extensions.length < 1) {
     extensions.push("html");
 }
 
-var excludedPatterns = program.excludedPaths || [];
+var excludedPatterns = program.excludedPatterns || [];
 
 var defaultString = program.defaultString || {}; //NODE: To use with 'typeof defaultString == "object"'
 
@@ -156,7 +156,7 @@ var processDir = function(dirName) {
                     console.log(err);
             }
         }
-        var shouldExclude = excludedPaths.some(function(ep) {
+        var shouldExclude = excludedPatterns.some(function(ep) {
             return (dirName + "/" + fileName).indexOf(ep) >= 0;
         });
         if (shouldExclude) {
