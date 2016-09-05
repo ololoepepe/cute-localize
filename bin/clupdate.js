@@ -41,7 +41,7 @@ if (extensions.length < 1) {
     extensions.push("html");
 }
 
-var excludedPatterns = excludedPaths || [];
+var excludedPatterns = program.excludedPaths || [];
 
 var defaultString = program.defaultString || {}; //NODE: To use with 'typeof defaultString == "object"'
 
