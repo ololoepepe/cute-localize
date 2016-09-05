@@ -23,7 +23,7 @@ program
     .option("-T, --no-parse-translate", "Do not parse default 'translate' function")
     .option("-N, --no-parse-noop", "Do not parse default 'translate.noop' function")
     .option("-G, --no-use-gitignore", "Do not use 'git check-ignore' to exclude files/directories")
-    .option("-X, --excluded-patterns", "Exclude files/directories whose paths contain the patterns specified")
+    .option("-X, --excluded-patterns <list>", "Exclude files/directories whose paths contain the patterns specified", list)
     .option("-v, --verbose", "Print error messages")
     .parse(process.argv);
 
