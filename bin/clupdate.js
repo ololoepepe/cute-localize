@@ -137,6 +137,12 @@ var matchTranslation = function(text, from) {
 
 var processDir = function(dirName) {
     FS.readdirSync(dirName).forEach(function(fileName) {
+        var shouldExclude = excludedPatterns.some(function(ep) {
+            return (dirName + "/" + fileName).indexOf(ep) >= 0;
+        });
+        if (shouldExclude) {
+            return;
+        }
         if (gitignore) {
             try {
                 var out = ChildProcess.execSync(`git check-ignore ${fileName}`, {
@@ -155,12 +161,6 @@ var processDir = function(dirName) {
                 if (verbose)
                     console.log(err);
             }
-        }
-        var shouldExclude = excludedPatterns.some(function(ep) {
-            return (dirName + "/" + fileName).indexOf(ep) >= 0;
-        });
-        if (shouldExclude) {
-            return;
         }
         var stats = FS.statSync(dirName + "/" + fileName);
         if (stats.isDirectory())
